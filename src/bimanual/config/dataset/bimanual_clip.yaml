@@ -1,0 +1,29 @@
+name: bimanual
+numpy_path: data/interim/bimanual
+graph_path: data/processed/bimanual
+filename: "data"
+
+obs_len: 20
+pred_len: 10
+window_stride: 2
+distance_thresh: 54
+iou_thresh: 0.01
+
+min_num_frame: 30
+sampling_rate: 3
+crnn_format: false
+is_rel_distance: false
+drop: 0.0
+
+num_obj: 17
+
+seg_label_version: 1
+is_delay_segment: False
+is_per_tran_v2: false
+use_gt_switch: false
+future_window: 0
+weight_gauss_kernel: 5
+weight_gauss_std: 7
+
+include: []
+exclude: []

@@ -1,0 +1,54 @@
+name: per_tran
+human_input_size: 10
+human_embedding_size: 16
+obj_input_size: 4
+obj_embedding_size: 8
+
+hidden_size: 128
+num_head: 1
+use_multihead: true
+
+dropout: 0.0
+nunm_obj: 17
+activation: identity
+attention_act: prelu
+hete_sem_act: prelu
+
+d_inter: 55
+d_aware: 500
+iou_thresh: 0.01
+
+switch_detach: true
+has_cross_graph_msg: true
+is_ego: True
+pred_vel: False
+is_center_wh_format: False
+has_switch_skip_connection: true
+has_adaptive_structure: true
+modify_gat: false
+ego_type: "normal"
+
+persistent:
+  name: persistent
+  obj_gru_size: 128
+  human_gru_size: 512
+
+transient:
+  name: transient
+  center_gru_size: 512
+  leaf_gru_size: 128
+  consider_iou: false
+  is_select_topk_leaf: false
+  k: 2
+
+switch:
+  name: switch
+  switch_type: distance_temp
+  segment_type: transient_center_msg
+  switch_act: prelu
+  switch_feat: location
+  initial_distance_beta: 1
+  initial_iou_beta: 1.2
+
+convert_back_to_box: true
+normalize: true

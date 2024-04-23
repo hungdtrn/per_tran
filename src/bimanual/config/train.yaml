@@ -1,0 +1,61 @@
+project_name: tmp
+task: bimanual
+experiment_name: test
+output_path: saved_models/bimanual
+logging_path: reports/logs
+resume_path: ''
+gpu: 0
+seed: 100
+is_wandb: false
+is_logging: true
+is_saving: true
+debug: false
+is_tensorboard: false
+num_thread: 8
+
+dataset:
+  batch_size: 128
+  shuffle: true
+
+model:
+  solver:
+    total_epochs: 300
+    optimizer:
+      name: adam
+      base_lr: 0.0015
+      amsgrad: true
+    loss:
+      lambda_human: 1
+      lambda_obj: 1
+      lambda_switch: 1
+      lambda_reg: 0.1
+      weighted_switch: False
+    early_stop:
+      patience: 30
+      delta: 1e-4
+      min_epoch: 20
+      criteria: lower
+    clip_grad:
+      name: norm
+      thresh: 5
+    scheduler:
+      name: unchange
+      reduce_gamma: 0.98
+      decay_step: 5
+      
+  architecture:
+    debug: false
+    num_obj: 17
+  
+override_cfg: ''
+debug_gradient: False
+
+hydra:
+  run:
+    dir: ${logging_path}/${task}/${project_name}/${experiment_name}_${now:%Y%m%d-%H%M%S}
+
+defaults:
+  - dataset: bimanual_clip
+  - model/architecture: crnn
+  - _self_
+

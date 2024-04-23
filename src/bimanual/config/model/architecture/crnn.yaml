@@ -1,0 +1,14 @@
+name: crnn
+human_input_size: 10
+human_embedding_size: 16
+obj_input_size: 4
+obj_embedding_size: 8
+
+obj_gru_size: 256
+human_gru_size: 1024
+hidden_size: 64
+dropout: 0.0
+
+learn_interaction: true
+normalize: true
+augment: true

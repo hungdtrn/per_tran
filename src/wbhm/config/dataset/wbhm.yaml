@@ -1,0 +1,20 @@
+name: wbhm
+numpy_path: ../beforeAAAI_transient_persistent_duality/data/interim/wbhm
+graph_path: data/processed/wbhm
+filename: "obs10_pred20"
+sample: 10
+num_box_vec: 8
+obs_len: 10
+pred_len: 20
+
+seed: 100
+drop: 0.0
+
+
+crnn_format: false
+duality_format: false
+is_per_tran_v2: false
+
+future_window: 0
+weight_gauss_kernel: 5
+weight_gauss_std: 7
